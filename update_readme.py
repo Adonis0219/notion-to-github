@@ -204,6 +204,10 @@ def main():
             }
         }
     }
+
+    res = requests.post(url, headers=headers, json=payload)
+    pages = res.json().get('results', [])
+    
     if pages:
         for page in pages:
             title, filepath = save_as_markdown(page, today)
